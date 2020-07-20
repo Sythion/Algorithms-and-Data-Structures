@@ -9,73 +9,80 @@ namespace Algorithms_and_Data_Structures
         
         public int Count { get; set; }
         
-        public void Add(T value)
+        public void Add(T item)
         {
             if (this.Root == null)
             {
-                this.Root = new MyBinaryTreeNode<T>(value);
+                this.Root = new MyBinaryTreeNode<T>(item);
             }
             else
             {
-                this.AddTo(this.Root, value);
+                this.Add(this.Root, item);
             }
-            
-            this.Count++;
         }
-        
-        public void AddTo(MyBinaryTreeNode<T> node, T value)
+
+        private void Add(MyBinaryTreeNode<T> node, T value)
         {
-            if(value.CompareTo(node.Value) < 0)
+            if (value.CompareTo(node.Value) < 0)
             {
                 if (node.Left == null)
                 {
-                    node.Left = new MyBinaryTreeNode<T>(value);	
+                    node.Left = new MyBinaryTreeNode<T>(value);
                 }
                 else
                 {
-                    this.AddTo(node.Left, value);	
+                    this.Add(node.Left, value);
                 }
             }
             else
             {
                 if (node.Right == null)
                 {
-                    node.Right = new MyBinaryTreeNode<T>(value);	
+                    node.Right = new MyBinaryTreeNode<T>(value);
                 }
                 else
                 {
-                    this.AddTo(node.Right, value);	
+                    this.Add(node.Right, value);
                 }
             }
         }
-        
+
         public MyBinaryTreeNode<T> Find(T value)
         {
+            var node = this.Root;
             if (this.Root == null)
             {
-                return null;
+                throw new Exception("The binary tree is empty");
             }
             else
             {
-                return this.FindAt(this.Root, value);
+                var result = this.Find(this.Root, value);
+                if (result == null)
+                {
+                    throw new Exception("The item was not found");
+                }
+                else
+                {
+                    return result;
+                }
             }
         }
 
-        public MyBinaryTreeNode<T> FindAt(MyBinaryTreeNode<T> node, T value)
+        private MyBinaryTreeNode<T> Find(MyBinaryTreeNode<T> node, T value)
         {
             if (value.CompareTo(node.Value) == 0)
             {
-                return node;	
+                return node;
             }
             else if (value.CompareTo(node.Value) < 0)
             {
                 if (node.Left == null)
                 {
-                    return null;	
+                    return null;
                 }
                 else
                 {
-                    return this.FindAt(node.Left, value);	
+                    return this.Find(node.Left, value);
                 }
             }
             else
@@ -86,18 +93,35 @@ namespace Algorithms_and_Data_Structures
                 }
                 else
                 {
-                    return this.FindAt(node.Right, value);
+                    return this.Find(node.Right, value);
                 }
             }
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public MyBinaryTreeNode<T> Traverse()
         {
-            var current = this.Root;
-            while (current != null)
+            if (this.Root == null)
             {
-                current = this.Root.Left;
+                throw new Exception("The binary tree is empty");
             }
+        }
+
+        private MyBinaryTreeNode<T> Traverse(MyBinaryTreeNode<T> node)
+        {
+            if (node.Left == null)
+            {
+                return node;
+            }
+            else
+            {
+                return this.Traverse(node.Left);
+            }
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {           
+            var node = this.Root;
+
         }
 
         IEnumerator IEnumerable.GetEnumerator()
