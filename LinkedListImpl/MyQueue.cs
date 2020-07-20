@@ -1,23 +1,10 @@
-<Query Kind="Program" />
-
-void Main()
+namespace Algorithms_and_Data_Structures.LinkedListImpl
 {
-	var queue = new MyQueue<int>();
-	queue.Enqueue(1);
-	queue.Enqueue(2);
-	queue.Enqueue(3);
-	queue.Count.Dump();
-	queue.Head.Dump();
-	queue.Dequeue();
-	queue.Count.Dump();
-	queue.Head.Dump();
-	foreach(var item in queue){
-		item.Dump();
-	}
-}
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
 
-// Define other methods and classes here
-public class MyQueue<T> : IEnumerable<T>
+    public class MyQueue<T> : IEnumerable<T>
 {
 	private LinkedList<T> list = new LinkedList<T>();
 	
@@ -39,7 +26,7 @@ public class MyQueue<T> : IEnumerable<T>
 	public void Enqueue(T item)
 	{
 		list.AddLast(item);
-		this.Head = list.First();
+		this.Head = list.First.Value;
 	}
 	
 	public T Dequeue()
@@ -48,9 +35,9 @@ public class MyQueue<T> : IEnumerable<T>
 		{
 			throw new Exception("The queue is empty");	
 		}
-		var item = list.First();
+		var item = list.First.Value;
 		list.RemoveFirst();
-		this.Head = list.First();
+		this.Head = list.First.Value;
 		return item;
 	}
 	
@@ -63,4 +50,5 @@ public class MyQueue<T> : IEnumerable<T>
 	{
 		return list.GetEnumerator();
 	}
+}
 }
