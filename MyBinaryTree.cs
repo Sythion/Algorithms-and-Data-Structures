@@ -81,28 +81,120 @@ namespace Algorithms_and_Data_Structures
             return current;
         }
 
-        public void Remove(T value)
+        public bool Remove(T value)
         {
             MyBinaryTreeNode<T> parent;
             var node = this.FindWithParent(value, out parent);
+            if (node == null)
+            {
+                return false;
+            }
 
             // Case 1
+            // Removed node has no right child.
+            // In this case, promote the left child to the parent.
             if (node.Right == null)
             {
+                if (parent == null)
+                {
+                    parent = node.Left;
+                }
+                else
+                {
+                    parent.Right = node.Left;
+                }
+            }
+            else if (node.Right.Left == null)
+            {
+                // Case 2
+                // Node to be removed right child has no left child
+                // Promote left child to removed node position
+                // Make left child new parent to left node of removed node.
+                parent.Right = node.Right;
+                node.Right.Left = node.Left;
+            }
+            else if (node.Right.Left != null)
+            {
+                // Case 3
+                // Node to be removed right child has a left child
+                // Promote right child's left-most child to the position of the node to be removed.
 
+                var leftMost = node.Right.Left;
+                while (leftMost.Left != null)
+                {
+                    leftMost = leftMost.Left;
+                }
+                parent.Right = leftMost;
+                leftMost.Left = node.Left;
+                leftMost.Right = node.Right;
+                node.Right.Left = null;
+            }
+
+            this.Count--;
+            return true;
+        }
+
+        public void InOrderTraversal(Action<T> action)
+        {
+            this.InOrderTraversal(action, this.Root);
+        }
+
+        private void InOrderTraversal(Action<T> action, MyBinaryTreeNode<T> node)
+        {
+            if (node != null)
+            {
+                this.InOrderTraversal(action, node.Left);
+                action(node.Value);
+                this.InOrderTraversal(action, node.Right);
+            }
+        }
+
+        public void PreOrderTraversal(Action<T> action)
+        {
+            this.PreOrderTraversal(action, this.Root);
+        }
+
+        private void PreOrderTraversal(Action<T> action, MyBinaryTreeNode<T> node)
+        {
+            if (node != null)
+            {
+                action(node.Value);
+                this.PreOrderTraversal(action, node.Left);
+                this.PreOrderTraversal(action, node.Right);
+            }
+        }
+
+        public void PostOrderTraversal(Action<T> action)
+        {
+            this.PostOrderTraversal(action, this.Root);
+        }
+
+        private void PostOrderTraversal(Action<T> action, MyBinaryTreeNode<T> node)
+        {
+            if (node != null)
+            {
+                this.PostOrderTraversal(action, node.Left);
+                this.PostOrderTraversal(action, node.Right);
+                action(node.Value);
             }
         }
 
         public IEnumerator<T> GetEnumerator()
-        {           
-            yield return this.Root.Value;
-            yield return this.Root.Left.Value;
-
+        {        
+            List<T> list = new List<T>();  
+            this.InOrderTraversal((v) => 
+            {
+                list.Add(v);
+            }, this.Root);
+            foreach(var item in list)
+            {
+                yield return item;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return ((IEnumerable<T>)this).GetEnumerator();
         }
     }
 
