@@ -19,6 +19,8 @@ namespace Algorithms_and_Data_Structures
             {
                 this.Add(this.Root, item);
             }
+
+            this.Count++;
         }
 
         private void Add(MyBinaryTreeNode<T> node, T value)
@@ -47,80 +49,54 @@ namespace Algorithms_and_Data_Structures
             }
         }
 
-        public MyBinaryTreeNode<T> Find(T value)
+        public bool Contains(T value)
         {
-            var node = this.Root;
-            if (this.Root == null)
-            {
-                throw new Exception("The binary tree is empty");
-            }
-            else
-            {
-                var result = this.Find(this.Root, value);
-                if (result == null)
-                {
-                    throw new Exception("The item was not found");
-                }
-                else
-                {
-                    return result;
-                }
-            }
+            MyBinaryTreeNode<T> parent;
+            return this.FindWithParent(value, out parent) != null;
         }
 
-        private MyBinaryTreeNode<T> Find(MyBinaryTreeNode<T> node, T value)
+        private MyBinaryTreeNode<T> FindWithParent(T value, out MyBinaryTreeNode<T> parent)
         {
-            if (value.CompareTo(node.Value) == 0)
+            var current = this.Root;
+            parent = null;
+            while (current != null)
             {
-                return node;
-            }
-            else if (value.CompareTo(node.Value) < 0)
-            {
-                if (node.Left == null)
+                if (value.CompareTo(current.Value) < 0)
                 {
-                    return null;
+                    parent = current;
+                    current = current.Left;
                 }
-                else
+                else if (value.CompareTo(current.Value) > 0)
                 {
-                    return this.Find(node.Left, value);
+                    parent = current;
+                    current = current.Right;
                 }
-            }
-            else
-            {
-                if (node.Right == null)
+                else 
                 {
-                    return null;
-                }
-                else
-                {
-                    return this.Find(node.Right, value);
+                    // Match
+                    break;
                 }
             }
+
+            return current;
         }
 
-        public MyBinaryTreeNode<T> Traverse()
+        public void Remove(T value)
         {
-            if (this.Root == null)
-            {
-                throw new Exception("The binary tree is empty");
-            }
-        }
+            MyBinaryTreeNode<T> parent;
+            var node = this.FindWithParent(value, out parent);
 
-        private MyBinaryTreeNode<T> Traverse(MyBinaryTreeNode<T> node)
-        {
-            if (node.Left == null)
+            // Case 1
+            if (node.Right == null)
             {
-                return node;
-            }
-            else
-            {
-                return this.Traverse(node.Left);
+
             }
         }
 
         public IEnumerator<T> GetEnumerator()
         {           
-            var node = this.Root;
+            yield return this.Root.Value;
+            yield return this.Root.Left.Value;
 
         }
 

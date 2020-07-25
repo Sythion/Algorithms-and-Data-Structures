@@ -26,8 +26,8 @@ namespace Algorithms_and_Data_Structures
             binaryTree.Add(6);
             binaryTree.Add(1);
             binaryTree.Add(7);
-            var node = binaryTree.Find(7);
-            Console.WriteLine(node.Value);
+            bool result = binaryTree.Contains(9);
+            Console.WriteLine(result);
         }
 
         public static void ExecuteSinglyLinkedList()
