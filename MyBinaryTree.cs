@@ -95,13 +95,25 @@ namespace Algorithms_and_Data_Structures
             // In this case, promote the left child to the parent.
             if (node.Right == null)
             {
+                // if root node...
                 if (parent == null)
                 {
                     parent = node.Left;
                 }
                 else
                 {
-                    parent.Right = node.Left;
+                    // we don't know on what side of the parent the node to be removed is on.
+                    // we need to check the value of the node to be removed against its parent.
+                    if (node.Value.CompareTo(parent.Value) < 0)
+                    {
+                        parent.Left = node.Left;
+                    }
+                    else if (node.Value.CompareTo(parent.Value) > 0)
+                    {
+                        parent.Right = node.Left;
+                    }
+
+                    // TODO: What about if the nodes are equal???
                 }
             }
             else if (node.Right.Left == null)
