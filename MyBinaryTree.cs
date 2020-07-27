@@ -101,7 +101,17 @@ namespace Algorithms_and_Data_Structures
                 }
                 else
                 {
-                    parent.Right = node.Left;
+                    // You don't know what side of the parent the node was on.  This solves that.
+                    if (node.Value.CompareTo(parent.Value) < 0)
+                    {
+                        parent.Left = node.Left;
+                    }
+                    else if (node.Value.CompareTo(parent.Value) > 0)
+                    {
+                        parent.Right = node.Left;
+                    }
+                    
+                    // TODO: What about if the value is equal?
                 }
             }
             else if (node.Right.Left == null)
@@ -110,8 +120,26 @@ namespace Algorithms_and_Data_Structures
                 // Node to be removed right child has no left child
                 // Promote left child to removed node position
                 // Make left child new parent to left node of removed node.
-                parent.Right = node.Right;
-                node.Right.Left = node.Left;
+
+                // If parent is null, then the node is the root node.  Just promote right.
+                if (parent == null)
+                {
+                    this.Root = node.Right;
+                }
+                else
+                {
+                    // Check if node is to right or left of parent again.
+                    if (node.Value.CompareTo(parent.Value) < 0)
+                    {
+                        parent.Left = node.Right;
+                    }
+                    else if (node.Value.CompareTo(parent.Value) > 0)
+                    {
+                        parent.Right = node.Right;
+                    }
+                    
+                    //node.Right.Left = node.Left;
+                }
             }
             else if (node.Right.Left != null)
             {
