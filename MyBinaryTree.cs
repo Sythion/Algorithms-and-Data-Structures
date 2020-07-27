@@ -98,7 +98,7 @@ namespace Algorithms_and_Data_Structures
                 // if root node...
                 if (parent == null)
                 {
-                    parent = node.Left;
+                    this.Root = node.Left;
                 }
                 else
                 {
@@ -139,8 +139,6 @@ namespace Algorithms_and_Data_Structures
                     {
                         parent.Right = node.Right;
                     }
-                    
-                    //node.Right.Left = node.Left;
                 }
             }
             else if (node.Right.Left != null)
@@ -154,10 +152,19 @@ namespace Algorithms_and_Data_Structures
                 {
                     leftMost = leftMost.Left;
                 }
-                parent.Right = leftMost;
+
+                if (parent == null)
+                {
+                    this.Root = leftMost;
+                }
+                else
+                {
+                    parent.Right = leftMost;
+                }
+
                 leftMost.Left = node.Left;
                 leftMost.Right = node.Right;
-                node.Right.Left = null;
+                node.Right.Left = null;             
             }
 
             this.Count--;
