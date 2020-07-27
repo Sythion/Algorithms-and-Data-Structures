@@ -21,18 +21,20 @@ namespace Algorithms_and_Data_Structures
         public static void ExecuteBinaryTree()
         {
             var binaryTree = new MyBinaryTree<int>();
-            binaryTree.Add(4);
+            /*binaryTree.Add(4);
             binaryTree.Add(8);
             binaryTree.Add(7);
             binaryTree.Add(10);
             binaryTree.Add(9);
-            /*binaryTree.Add(6);
+            binaryTree.Remove(8);*/
+            binaryTree.Add(6);
             binaryTree.Add(1);
-            binaryTree.Add(3);
+            binaryTree.Add(0);
             binaryTree.Add(5);
-            binaryTree.Add(8);
-            binaryTree.Add(7);*/
-            binaryTree.Remove(8);
+            binaryTree.Add(3);
+            binaryTree.Add(2);
+            binaryTree.Add(4);
+            binaryTree.Remove(1);
             foreach(var item in binaryTree)
             {
                 Console.WriteLine(item);

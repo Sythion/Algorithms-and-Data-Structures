@@ -147,9 +147,11 @@ namespace Algorithms_and_Data_Structures
                 // Node to be removed right child has a left child
                 // Promote right child's left-most child to the position of the node to be removed.
 
+                var leftMostParent = node.Right;
                 var leftMost = node.Right.Left;
                 while (leftMost.Left != null)
                 {
+                    leftMostParent = leftMost;
                     leftMost = leftMost.Left;
                 }
 
@@ -159,12 +161,19 @@ namespace Algorithms_and_Data_Structures
                 }
                 else
                 {
-                    parent.Right = leftMost;
+                    if (node.Value.CompareTo(parent.Value) < 0)
+                    {
+                        parent.Left = leftMost;
+                    }
+                    else if (node.Value.CompareTo(parent.Value) > 0)
+                    {
+                        parent.Right = leftMost;
+                    }
                 }
 
+                leftMostParent.Left = leftMost.Right;
                 leftMost.Left = node.Left;
                 leftMost.Right = node.Right;
-                node.Right.Left = null;             
             }
 
             this.Count--;
