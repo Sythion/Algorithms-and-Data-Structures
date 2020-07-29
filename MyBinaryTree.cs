@@ -161,6 +161,7 @@ namespace Algorithms_and_Data_Structures
                 }
                 else
                 {
+                    // Figure out if node is to the left or right of parent
                     if (node.Value.CompareTo(parent.Value) < 0)
                     {
                         parent.Left = leftMost;
@@ -171,6 +172,7 @@ namespace Algorithms_and_Data_Structures
                     }
                 }
 
+                // Update subtree.
                 leftMostParent.Left = leftMost.Right;
                 leftMost.Left = node.Left;
                 leftMost.Right = node.Right;
@@ -194,6 +196,7 @@ namespace Algorithms_and_Data_Structures
                 this.InOrderTraversal(action, node.Right);
             }
         }
+
 
         public void PreOrderTraversal(Action<T> action)
         {
@@ -225,9 +228,129 @@ namespace Algorithms_and_Data_Structures
             }
         }
 
+        
+        public IEnumerator<T> InOrderTraversalNoRecurse()
+        {
+            var stack = new Stack<MyBinaryTreeNode<T>>();
+            var current = this.Root;
+            bool goLeft = true;
+
+            // Push head to stack
+            stack.Push(current);
+
+            while (stack.Count > 0)
+            {
+                if (goLeft)
+                {
+                    // Move everything except left-most node to stack.
+                    while (current.Left != null)
+                    {
+                        stack.Push(current);
+                        current = current.Left;
+                    }
+                }
+
+                yield return current.Value;
+                
+                // Go right now.
+                goLeft = false;
+
+                if (current.Right != null)
+                {
+                    current = current.Right;
+                    goLeft = true;
+                }
+                else
+                {
+                    current = stack.Pop();
+                    goLeft = false;
+                }
+            }
+        }
+
+        // This is very similar to InOrderTraversalNoRecurse.  The only change is where the values are returned.
+        public IEnumerator<T> PreOrderTraversalNoRecurse()
+        {
+            var stack = new Stack<MyBinaryTreeNode<T>>();
+            var current = this.Root;
+            bool goLeft = true;
+
+            // Push head to stack
+            stack.Push(current);
+            yield return current.Value;
+
+            while (stack.Count > 0)
+            {
+                if (goLeft)
+                {
+                    // Move everything except left-most node to stack.
+                    while (current.Left != null)
+                    {
+                        stack.Push(current);
+                        current = current.Left;
+                        yield return current.Value;
+                    }
+                }
+                
+                // Go right now.
+                goLeft = false;
+
+                if (current.Right != null)
+                {
+                    current = current.Right;
+                    yield return current.Value;
+                    goLeft = true;
+                }
+                else
+                {
+                    current = stack.Pop();
+                    goLeft = false;
+                }
+            }
+        }
+
+        // This one is more 'complicated' than the other two.  It's complicated in that it was a lot different even though 
+        // the implementation actually ends up simpler. Uses a 'Visited' flag not used in the other two methods.
+        public IEnumerator<T> PostOrderTraversalNoRecurse()
+        {
+            var stack = new Stack<MyBinaryTreeNode<T>>();
+            var current = this.Root;
+
+            // Push head to stack
+            stack.Push(current);
+
+            while (stack.Count > 0)
+            {
+                // Peek to get current node.
+                current = stack.Peek();
+                // Go left
+                if (current.Left != null && !current.Left.Visited)
+                {
+                    stack.Push(current.Left);
+                }
+                else
+                {
+                    // Go right
+                    if (current.Right != null && !current.Right.Visited)
+                    {
+                        stack.Push(current.Right);
+                    }
+                    else
+                    {
+                        // Go to previous node by popping off stack.
+                        // Then peek at the top of the stack to 
+                        yield return current.Value;
+                        current.Visited = true;
+                        stack.Pop();
+                    }
+                }
+                
+            }
+        }
+
         public IEnumerator<T> GetEnumerator()
         {        
-            List<T> list = new List<T>();  
+            /*List<T> list = new List<T>();  
             this.InOrderTraversal((v) => 
             {
                 list.Add(v);
@@ -235,7 +358,8 @@ namespace Algorithms_and_Data_Structures
             foreach(var item in list)
             {
                 yield return item;
-            }
+            }*/
+            return this.PostOrderTraversalNoRecurse();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -256,6 +380,9 @@ namespace Algorithms_and_Data_Structures
         public MyBinaryTreeNode<TNode> Left { get; set; }
         
         public MyBinaryTreeNode<TNode> Right { get; set; }
+
+        // Used only in post order traversal
+        public bool Visited {get; set;}
 
         public int CompareTo(TNode other)
         {
