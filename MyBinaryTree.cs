@@ -5,9 +5,30 @@ namespace Algorithms_and_Data_Structures
     using System.Collections.Generic;
     public class MyBinaryTree<T> : IEnumerable<T> where T : IComparable<T>
     {
+#region Fields
+        private int _count;
+#endregion
+
+#region Properties
         public MyBinaryTreeNode<T> Root { get; set; }
         
-        public int Count { get; set; }
+        public int Count 
+        { 
+            get
+            {
+                return _count;
+            } 
+        }
+
+#endregion
+
+#region Methods
+
+        public void Clear()
+        {
+            _count = 0;
+            this.Root = null;
+        }
         
         public void Add(T item)
         {
@@ -20,7 +41,7 @@ namespace Algorithms_and_Data_Structures
                 this.Add(this.Root, item);
             }
 
-            this.Count++;
+            _count++;
         }
 
         private void Add(MyBinaryTreeNode<T> node, T value)
@@ -178,7 +199,7 @@ namespace Algorithms_and_Data_Structures
                 leftMost.Right = node.Right;
             }
 
-            this.Count--;
+            _count--;
             return true;
         }
 
@@ -350,16 +371,7 @@ namespace Algorithms_and_Data_Structures
 
         public IEnumerator<T> GetEnumerator()
         {        
-            /*List<T> list = new List<T>();  
-            this.InOrderTraversal((v) => 
-            {
-                list.Add(v);
-            }, this.Root);
-            foreach(var item in list)
-            {
-                yield return item;
-            }*/
-            return this.PostOrderTraversalNoRecurse();
+            return this.InOrderTraversalNoRecurse();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -367,6 +379,10 @@ namespace Algorithms_and_Data_Structures
             return ((IEnumerable<T>)this).GetEnumerator();
         }
     }
+
+#endregion
+
+#region Classes
 
     public class MyBinaryTreeNode<TNode> : IComparable<TNode> where TNode : IComparable<TNode>
     {
@@ -389,4 +405,6 @@ namespace Algorithms_and_Data_Structures
             return this.Value.CompareTo(other);
         }
     }
+
+#endregion
 }
