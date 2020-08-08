@@ -6,19 +6,12 @@ namespace Algorithms_and_Data_Structures
     public class MyBinaryTree<T> : IEnumerable<T> where T : IComparable<T>
     {
 #region Fields
-        private int _count;
 #endregion
 
 #region Properties
         public MyBinaryTreeNode<T> Root { get; set; }
         
-        public int Count 
-        { 
-            get
-            {
-                return _count;
-            } 
-        }
+        public int Count { get; private set;}
 
 #endregion
 
@@ -26,7 +19,7 @@ namespace Algorithms_and_Data_Structures
 
         public void Clear()
         {
-            _count = 0;
+            this.Count = 0;
             this.Root = null;
         }
         
@@ -41,7 +34,7 @@ namespace Algorithms_and_Data_Structures
                 this.Add(this.Root, item);
             }
 
-            _count++;
+            this.Count++;
         }
 
         private void Add(MyBinaryTreeNode<T> node, T value)
@@ -199,7 +192,7 @@ namespace Algorithms_and_Data_Structures
                 leftMost.Right = node.Right;
             }
 
-            _count--;
+            this.Count--;
             return true;
         }
 

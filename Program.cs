@@ -15,7 +15,25 @@ namespace Algorithms_and_Data_Structures
             // ExecuteStackLinkedList();
             // ExecuteStackArray();
             // ExecutePriorityQueue();
-            ExecuteBinaryTree();
+            // ExecuteBinaryTree();
+            ExecuteHashTable();
+        }
+
+        public static void ExecuteHashTable()
+        {
+            var hashTable = new MyHashTable<int, string>(1000);
+            hashTable.Add(1, "Jane");
+            hashTable.Add(2, "Henry");
+            foreach(var value in hashTable.Values)
+            {
+                Console.WriteLine(value);
+            }
+            hashTable.Remove(2);
+            foreach(var value in hashTable.Values)
+            {
+                Console.WriteLine(value);
+            }
+            Console.WriteLine(hashTable[2]);
         }
 
         public static void ExecuteBinaryTree()
