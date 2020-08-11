@@ -1,10 +1,10 @@
-namespace Algorithms_and_Data_Structures.ArrayImpl
+namespace Algorithms_and_Data_Structures
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
 
-    public class MyStack<T> : IEnumerable<T>
+    public class MyStackArray<T> : IEnumerable<T>
     {
         private T[] array = new T[0];
 

@@ -1,4 +1,4 @@
-namespace Algorithms_and_Data_Structures.LinkedListImpl
+namespace Algorithms_and_Data_Structures
 {
 	using System;
 	using System.Collections;
@@ -209,17 +209,5 @@ namespace Algorithms_and_Data_Structures.LinkedListImpl
 			}
 			return false;
 		}
-	}
-
-	public class MySinglyLinkedListNode<T>
-	{
-		public MySinglyLinkedListNode(T value)
-		{
-			this.Value = value;
-		}
-
-		public MySinglyLinkedListNode<T> Next { get; set; }
-
-		public T Value { get; set; }
 	}
 }

@@ -8,21 +8,24 @@ namespace Algorithms_and_Data_Structures.Tests
 
     public class BinaryTreeTests
     {
-        [Fact]
-        public void BinaryTree_CallRemoveOnEmpty_ReturnsFalse()
+        [Theory]
+        [InlineData(2)]
+        public void BinaryTree_CallRemoveOnEmpty_ReturnsFalse(int item)
         {
             var binaryTree = new MyBinaryTree<int>();
-            bool removed = binaryTree.Remove(2);
+            bool removed = binaryTree.Remove(item);
             Assert.False(removed, "An item could not be removed");
         }
 
-        [Fact]
-        public void BinaryTree_Contains_ReturnsFalse()
+        [Theory]
+        [InlineData(2)]
+        public void BinaryTree_Contains_ReturnsFalse(int item)
         {
             var binaryTree = new MyBinaryTree<int>();
-            bool hasItem = binaryTree.Contains(2);
+            bool hasItem = binaryTree.Contains(item);
             Assert.False(hasItem, "An item was found");
         }
+        
 
         [Fact]
         public void BinaryTree_Contains_ReturnsTrue()
@@ -33,10 +36,10 @@ namespace Algorithms_and_Data_Structures.Tests
             Assert.True(hasItem, "An item could not be found");
         }
 
-        [Fact]
-        public void BinaryTree_InOrderEnumeration_ReturnsTrue()
+        [Theory]
+        [InlineData(new int[]{1, 2, 3, 4, 5, 6, 7})]
+        public void BinaryTree_InOrderEnumeration_ReturnsTrue(int[] expected)
         {
-            var expectedList = new List<int>{1, 2, 3, 4, 5, 6, 7};
             var binaryTree = new MyBinaryTree<int>();
             binaryTree.Add(4);
             binaryTree.Add(2);
@@ -46,13 +49,13 @@ namespace Algorithms_and_Data_Structures.Tests
             binaryTree.Add(5);
             binaryTree.Add(7);
             var list = binaryTree.Select(b => b).ToList();
-            Assert.True(list.SequenceEqual(expectedList), "The list is not in order");
+            Assert.True(list.SequenceEqual(expected.ToList()), "The list is not in order");
         }
 
-        [Fact]
-        public void BinaryTree_InOrderEnumeration_ReturnsFalse()
+        [Theory]
+        [InlineData(new int[]{7, 1, 2, 3, 4, 5, 6})]
+        public void BinaryTree_InOrderEnumeration_ReturnsFalse(int[] expected)
         {
-            var expectedList = new List<int>{7, 1, 2, 3, 4, 5, 6};
             var binaryTree = new MyBinaryTree<int>();
             binaryTree.Add(4);
             binaryTree.Add(2);
@@ -62,7 +65,7 @@ namespace Algorithms_and_Data_Structures.Tests
             binaryTree.Add(5);
             binaryTree.Add(7);
             var list = binaryTree.Select(b => b).ToList();
-            Assert.False(list.SequenceEqual(expectedList), "The list is in order");
+            Assert.False(list.SequenceEqual(expected.ToList()), "The list is in order");
         }
     }
 }

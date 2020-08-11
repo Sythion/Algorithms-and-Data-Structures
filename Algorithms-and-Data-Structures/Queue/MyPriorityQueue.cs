@@ -1,4 +1,4 @@
-namespace Algorithms_and_Data_Structures.LinkedListImpl
+namespace Algorithms_and_Data_Structures
 {
     using System;
     using System.Collections;

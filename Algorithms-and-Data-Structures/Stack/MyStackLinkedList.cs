@@ -1,10 +1,10 @@
-namespace Algorithms_and_Data_Structures.LinkedListImpl
+namespace Algorithms_and_Data_Structures
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
 
-    public class MyStack<T> : IEnumerable<T>
+    public class MyStackLinkedList<T> : IEnumerable<T>
     {
         LinkedList<T> list = new LinkedList<T>();
         
