@@ -9,7 +9,7 @@ namespace Algorithms_and_Data_Structures
     /// The complexiy when it is doing comparisons in MergeAndSort is O(N).
     /// The complexity when it is breaking apart the array is O(log N).
     /// Because MergeAndSort is happening at each level of each item, that is where O(N log N) comes form.
-    /// Its space complexity should be O(N).
+    /// Its space complexity should approach O(N).  There is some additional space taken from creating new arrays.
     /// </summary>
     public class MergeSort
     {
