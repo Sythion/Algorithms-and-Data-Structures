@@ -8,7 +8,7 @@ namespace Algorithms_and_Data_Structures
         {
             if (low < high)
             {
-                var p = this.Partition(array, low, high);
+                var p = this.HoarePartition(array, low, high);
                 this.Sort(array, 0, p-1);
                 this.Sort(array, p+1, high);
             }
@@ -21,7 +21,7 @@ namespace Algorithms_and_Data_Structures
         /// <param name="low">The low value.</param>
         /// <param name="high">The high value.</param>
         /// <returns>Returns the final position of the pivot value.</returns>
-        public int Partition(int[] array, int low, int high) // treat high as pivot
+        public int LomutoPartition(int[] array, int low, int high) // treat high as pivot
         {
             int pivot = array[high];
 
@@ -40,6 +40,39 @@ namespace Algorithms_and_Data_Structures
             
             this.Swap(ref array[i], ref array[high]);
             return i;
+        }
+
+        public int HoarePartition(int[] array, int low, int high)
+        {
+            // 3,7,8,5,2,1,9,5,4
+            // pivot = 4
+            // i = -1
+            // j = 9
+            // 
+
+
+
+            int pivot = (low + high)/2;
+            int i = low - 1;
+            int j = high + 1;
+            while(true)
+            {
+                do
+                {
+                    i++;
+                }
+                while(array[i] < pivot);
+                do
+                {
+                    j--;
+                }
+                while(array[j] > pivot);
+                if (i >= j)
+                {
+                    return j;
+                }
+                this.Swap(ref array[i], ref array[j]);
+            }
         }
 
         private void Swap(ref int value1, ref int value2)

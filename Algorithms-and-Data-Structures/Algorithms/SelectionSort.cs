@@ -4,7 +4,10 @@ namespace Algorithms_and_Data_Structures
 
     /// <summary>
     /// Implementation of the selection sort algorithm.
+    /// Linear sorting algorithm.
     /// The worst-case, average-case and best-case time complexity is N^2.
+    /// The space complexity is O(N).
+    /// This algorithm is comparison heavy but not swap heavy.
     /// </summary>
     public class SelectionSort
     {
