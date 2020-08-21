@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "c:\\algorithms-and-data-structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj": {}
+    "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj": {}
   },
   "projects": {
-    "c:\\algorithms-and-data-structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj": {
+    "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\algorithms-and-data-structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj",
+        "projectUniqueName": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj",
         "projectName": "Algorithms-and-Data-Structures",
-        "projectPath": "c:\\algorithms-and-data-structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj",
-        "packagesPath": "C:\\Users\\Melissa\\.nuget\\packages\\",
-        "outputPath": "c:\\algorithms-and-data-structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\obj\\",
+        "projectPath": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj",
+        "packagesPath": "C:\\Users\\jrrae\\.nuget\\packages\\",
+        "outputPath": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Melissa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\jrrae\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

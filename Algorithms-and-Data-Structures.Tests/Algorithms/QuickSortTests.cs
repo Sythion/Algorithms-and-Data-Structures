@@ -1,4 +1,4 @@
-namespace Algorithms_and_Data_Structures
+namespace Algorithms_and_Data_Structures.Tests
 {
     using System;
     using System.Linq;

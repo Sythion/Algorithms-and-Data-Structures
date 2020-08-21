@@ -16,3 +16,12 @@ c:\algorithms-and-data-structures\Algorithms-and-Data-Structures\Algorithms-and-
 c:\algorithms-and-data-structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\obj\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.csproj.CoreCompileInputs.cache
 c:\algorithms-and-data-structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\obj\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.dll
 c:\algorithms-and-data-structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\obj\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.pdb
+d:\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\bin\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.deps.json
+d:\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\bin\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.dll
+d:\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\bin\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.pdb
+d:\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\obj\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.csprojAssemblyReference.cache
+d:\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\obj\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.AssemblyInfoInputs.cache
+d:\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\obj\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.AssemblyInfo.cs
+d:\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\obj\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.csproj.CoreCompileInputs.cache
+d:\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\obj\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.dll
+d:\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\Algorithms-and-Data-Structures\obj\Debug\netcoreapp3.1\Algorithms-and-Data-Structures.pdb
