@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\Algorithms-and-Data-Structures.Tests.csproj": {}
+    "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\Algorithms-and-Data-Structures.Tests.csproj": {}
   },
   "projects": {
-    "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\Algorithms-and-Data-Structures.Tests.csproj": {
+    "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\Algorithms-and-Data-Structures.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\Algorithms-and-Data-Structures.Tests.csproj",
+        "projectUniqueName": "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\Algorithms-and-Data-Structures.Tests.csproj",
         "projectName": "Algorithms-and-Data-Structures.Tests",
-        "projectPath": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\Algorithms-and-Data-Structures.Tests.csproj",
+        "projectPath": "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\Algorithms-and-Data-Structures.Tests.csproj",
         "packagesPath": "C:\\Users\\jrrae\\.nuget\\packages\\",
-        "outputPath": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\obj\\",
+        "outputPath": "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj": {
-                "projectPath": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj"
+              "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj": {
+                "projectPath": "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj": {
+    "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj",
+        "projectUniqueName": "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj",
         "projectName": "Algorithms-and-Data-Structures",
-        "projectPath": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj",
+        "projectPath": "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures.csproj",
         "packagesPath": "C:\\Users\\jrrae\\.nuget\\packages\\",
-        "outputPath": "D:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\obj\\",
+        "outputPath": "d:\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\Algorithms-and-Data-Structures\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
