@@ -24,8 +24,9 @@ namespace Algorithms_and_Data_Structures.Tests
         }
 
         [Theory]
-        //[InlineData(new int[]{4,2,1,3}, new int[]{2,1,4,3})]
+        [InlineData(new int[]{4,2,1,3}, new int[]{2,1,4,3})]
         [InlineData(new int[]{4}, new int[] {4})]
+        [InlineData(new int[]{3,2,1}, new int[] {2,1,3})]
         public void RightRotation_DefaultInput_ReturnsTrue(int[] input, int[] expected)
         {
             var tree = new MyAVLTree<int>();
