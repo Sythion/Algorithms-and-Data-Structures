@@ -394,6 +394,18 @@ namespace Algorithms_and_Data_Structures
             
         }
 
+        public void LeftRotation()
+        {
+            if (this.Root != null)
+            {
+                this.Root.LeftRotation();
+            }
+            else
+            {
+                throw new Exception("The AVL Tree is empty");
+            }
+        }
+
         #endregion
 
     }

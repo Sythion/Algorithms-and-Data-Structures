@@ -129,47 +129,56 @@ namespace Algorithms_and_Data_Structures
         }
     }
 
-    public void LeftRotation()
+    /// <summary>
+    /// Changes the root node and updates all references between the root reference, parent node, and new root.
+    /// </summary>
+    /// <param name="newRoot">The node to make the new root.</param>
+    private void SetRoot(MyAVLTreeNode<T> newRoot)
     {
-        throw new NotImplementedException();
+        if (this.Parent == null)
+        {
+            this.tree.Root = newRoot;
+        }
+        else
+        {
+            if (this.Parent.Left == this)
+            {
+                this.Parent.Left = newRoot;
+            }
+            else if (this.Parent.Right == this)
+            {
+                this.Parent.Right = newRoot;
+            }
+        }
     }
 
+    /// <summary>
+    /// Performs a left rotation around the current node.
+    /// </summary>
+    public void LeftRotation()
+    {
+        if (this.MaxChildHeight(this) > 1)
+        {
+            var newRoot = this.Right;
+            this.SetRoot(newRoot);
+            this.Right = newRoot.Left;
+            newRoot.Left = this;
+        }
+    }
+
+    /// <summary>
+    /// Performs a right rotation around the current node.
+    /// </summary>
     public void RightRotation()
     {
         if (this.MaxChildHeight(this) > 1)
         {
             var newRoot = this.Left;
-            // if this node is root
-            if (this.Parent == null)
-            {
-                this.tree.Root = newRoot;
-            }
-            else
-            {
-                if (this.Parent.Left == this)
-                {
-                    this.Parent.Left = newRoot;
-                }
-                else if (this.Parent.Right == this)
-                {
-                    this.Parent.Right = newRoot;
-                }
-            }
+            this.SetRoot(newRoot);
 
             this.Left = newRoot.Right;
             newRoot.Right = this;
-        }
-
-        
-        /*
-        // Promote left child to root
-        this.Left.Parent = this.Parent;
-        this.Parent = this.Left;
-
-        // Move right child of new root
-        this.left = this.Parent.Right;
-        this.Parent.Right = this;      
-        */   
+        }  
     }
 
     public void LeftRightRotation()
