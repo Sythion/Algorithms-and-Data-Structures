@@ -7,12 +7,20 @@ namespace Algorithms_and_Data_Structures
     public class MyAVLTree<T> : IEnumerable<T> where T : IComparable<T>
     {
 #region Fields
+
+#endregion
+
+#region Constructors
+    public MyAVLTree(bool autoBalance = true) => this.AutoBalance = autoBalance;
+
 #endregion
 
 #region Properties
         public MyAVLTreeNode<T> Root { get; set; }
         
         public int Count { get; private set;}
+
+        public bool AutoBalance {get; set;}
 
 #endregion
 
@@ -69,6 +77,16 @@ namespace Algorithms_and_Data_Structures
                 {
                     this.Add(node.Right, value);
                 }
+            }
+
+            this.BalanceNode(node);
+        }
+
+        private void BalanceNode(MyAVLTreeNode<T> node)
+        {
+            if (this.AutoBalance && (node.BalanceFactor > 1 || node.BalanceFactor < -1))
+            {
+                node.Balance();
             }
         }
 
@@ -202,6 +220,17 @@ namespace Algorithms_and_Data_Structures
             }
 
             this.Count--;
+
+            // Auto-balancing
+            if (parent == null)
+            {
+                this.Root.Balance();
+            }
+            else
+            {
+                parent.Balance();
+            }
+
             return true;
         }
 
@@ -379,31 +408,6 @@ namespace Algorithms_and_Data_Structures
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable<T>)this).GetEnumerator();
-        }
-
-        public void RightRotation()
-        {
-            if (this.Root != null)
-            {
-                this.Root.RightRotation();
-            }
-            else
-            {
-                throw new Exception("The AVL Tree is empty");
-            }
-            
-        }
-
-        public void LeftRotation()
-        {
-            if (this.Root != null)
-            {
-                this.Root.LeftRotation();
-            }
-            else
-            {
-                throw new Exception("The AVL Tree is empty");
-            }
         }
 
         #endregion

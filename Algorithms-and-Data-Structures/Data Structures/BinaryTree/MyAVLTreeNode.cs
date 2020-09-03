@@ -103,7 +103,7 @@ namespace Algorithms_and_Data_Structures
         return 0;
     }
 
-    private void Balance()
+    public void Balance()
     {
         if (this.State == TreeState.RightHeavy)
         {
@@ -135,6 +135,7 @@ namespace Algorithms_and_Data_Structures
     /// <param name="newRoot">The node to make the new root.</param>
     private void SetRoot(MyAVLTreeNode<T> newRoot)
     {
+        newRoot.Parent = this.Parent;
         if (this.Parent == null)
         {
             this.tree.Root = newRoot;
@@ -155,40 +156,54 @@ namespace Algorithms_and_Data_Structures
     /// <summary>
     /// Performs a left rotation around the current node.
     /// </summary>
-    public void LeftRotation()
+    /// <returns>Returns the new root node for that section.</returns>
+    public MyAVLTreeNode<T> LeftRotation()
     {
+        MyAVLTreeNode<T> newRoot = null;
         if (this.MaxChildHeight(this) > 1)
         {
-            var newRoot = this.Right;
-            this.SetRoot(newRoot);
-            this.Right = newRoot.Left;
-            newRoot.Left = this;
+            if (this.Right != null)
+            {
+                newRoot = this.Right;
+                this.SetRoot(newRoot);
+                this.Right = newRoot?.Left;
+                newRoot.Left = this;
+            }
         }
+        return newRoot;
     }
 
     /// <summary>
     /// Performs a right rotation around the current node.
     /// </summary>
-    public void RightRotation()
+    /// <returns>Returns the new root node for that section.</returns>
+    public MyAVLTreeNode<T> RightRotation()
     {
+        MyAVLTreeNode<T> newRoot = null;
         if (this.MaxChildHeight(this) > 1)
         {
-            var newRoot = this.Left;
-            this.SetRoot(newRoot);
-
-            this.Left = newRoot.Right;
-            newRoot.Right = this;
-        }  
+            if (this.Left != null)
+            {
+                newRoot = this.Left;
+                this.SetRoot(newRoot);
+                this.Left = newRoot?.Right;
+                newRoot.Right = this;
+            }
+        } 
+        return newRoot; 
     }
 
     public void LeftRightRotation()
     {
-        throw new NotImplementedException();
+        var newRoot = this.RightRotation();
+        this.RightRotation();
+        newRoot.LeftRotation();
     }
 
     public void RightLeftRotation()
     {
-        throw new NotImplementedException();
+        this.Left.LeftRotation();
+        this.RightRotation();
     }
 
     #endregion
