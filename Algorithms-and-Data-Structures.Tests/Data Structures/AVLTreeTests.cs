@@ -100,6 +100,7 @@ namespace Algorithms_and_Data_Structures.Tests
             tree.Remove(4);
             tree.Remove(6);
             tree.Remove(8);
+            tree.Contains()
             var expected2 = new int[] {2,1,3,5};
             Assert.True(tree.SequenceEqual(expected2), $"The expected sequence was {expected2}, but the actual was {string.Join(',', tree)}");
         }

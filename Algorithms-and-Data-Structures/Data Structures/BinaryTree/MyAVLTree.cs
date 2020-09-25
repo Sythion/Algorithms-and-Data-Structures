@@ -11,27 +11,56 @@ namespace Algorithms_and_Data_Structures
 #endregion
 
 #region Constructors
+
+    /// <summary>
+    /// Custom AVL tree class.
+    /// Best-case time complexity for an AVL tree search is O(log(N)) if the tree is balanced.  
+    /// All binary operations will be log(N) for a single search.  This is because at each level of the tree, we will require at most 1 additional comparison.
+    /// So for a binary tree with 16 nodes (nodes without children) we will require at most 4 comparisons which equals the height of the tree (starting at 0).
+    /// Since the tree is auto-balancing, worst-case time complexity for a binary tree search approaches O(log(N). 
+    /// </summary>
+    /// <typeparam name="T">The generic type</typeparam>
     public MyAVLTree(bool autoBalance = true) => this.AutoBalance = autoBalance;
 
 #endregion
 
 #region Properties
+
+        /// <summary>
+        /// Gets or sets the root node.
+        /// </summary>
+        /// <value>Gets or sets the root node.</value>
         public MyAVLTreeNode<T> Root { get; set; }
         
+        /// <summary>
+        /// Gets the number of nodes in the tree.
+        /// </summary>
+        /// <value>Gets the number of nodes in the tree.</value>
         public int Count { get; private set;}
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the tree is set to be autobalancing or not (default true, useful for testing).
+        /// </summary>
+        /// <value></value>
         public bool AutoBalance {get; set;}
 
 #endregion
 
 #region Methods
 
+        /// <summary>
+        /// Removes all nodes from the tree.
+        /// </summary>
         public void Clear()
         {
             this.Count = 0;
             this.Root = null;
         }
 
+        /// <summary>
+        /// Adds a range of items.
+        /// </summary>
+        /// <param name="items">The items to add.</param>
         public void AddRange(params T[] items)
         {
             foreach(var item in items)
@@ -40,6 +69,10 @@ namespace Algorithms_and_Data_Structures
             }
         }
         
+        /// <summary>
+        /// Adds the provided value to the tree.
+        /// </summary>
+        /// <param name="value">The value of the item to add.</param>
         public void Add(T item)
         {
             if (this.Root == null)
@@ -53,6 +86,12 @@ namespace Algorithms_and_Data_Structures
 
             this.Count++;
         }
+
+        /// <summary>
+        /// Recursively adds the value to the tree, beginning with the provided node.
+        /// </summary>
+        /// <param name="node">The node to first compare when adding values.</param>
+        /// <param name="value">The value to add.</param>
 
         private void Add(MyAVLTreeNode<T> node, T value)
         {
@@ -82,6 +121,10 @@ namespace Algorithms_and_Data_Structures
             this.BalanceNode(node);
         }
 
+        /// <summary>
+        /// Balances the tree starting at the provided node.
+        /// </summary>
+        /// <param name="node">The node balance all other nodes under.</param>
         private void BalanceNode(MyAVLTreeNode<T> node)
         {
             if (this.AutoBalance && (node.BalanceFactor > 1 || node.BalanceFactor < -1))
@@ -90,12 +133,23 @@ namespace Algorithms_and_Data_Structures
             }
         }
 
+        /// <summary>
+        /// Returns a value indicating whether the tree contains the provided value or not.
+        /// </summary>
+        /// <param name="value">The value to find.</param>
+        /// <returns>Returns a value indicating whether the tree contains the provided value or not.</returns>
         public bool Contains(T value)
         {
             MyAVLTreeNode<T> parent;
             return this.FindWithParent(value, out parent) != null;
         }
 
+        /// <summary>
+        /// Searches the tree for the provided value and also gets the value's parent.
+        /// </summary>
+        /// <param name="value">The value to search for.</param>
+        /// <param name="parent">The parent of the value, if it is found.</param>
+        /// <returns>Returns the MyAVLTreeNode with the matching value.</returns>
         private MyAVLTreeNode<T> FindWithParent(T value, out MyAVLTreeNode<T> parent)
         {
             var current = this.Root;
@@ -122,6 +176,11 @@ namespace Algorithms_and_Data_Structures
             return current;
         }
 
+        /// <summary>
+        /// Removes the node with the provided value.
+        /// </summary>
+        /// <param name="value">The value of the node to remove.</param>
+        /// <returns>Returns a value indicating whether the node was removed or not.</returns>
         public bool Remove(T value)
         {
             MyAVLTreeNode<T> parent;
@@ -234,11 +293,20 @@ namespace Algorithms_and_Data_Structures
             return true;
         }
 
+        /// <summary>
+        /// Traverses the tree in value order.
+        /// </summary>
+        /// <param name="action">The action object necessary for recursive traversal.</param>
         public void InOrderTraversal(Action<T> action)
         {
             this.InOrderTraversal(action, this.Root);
         }
 
+        /// <summary>
+        /// Traverses the tree in value order.
+        /// </summary>
+        /// <param name="action">The action object necessary for recursive traversal.</param>
+        /// <param name="node">The node to start traversing.</param>
         private void InOrderTraversal(Action<T> action, MyAVLTreeNode<T> node)
         {
             if (node != null)
@@ -249,12 +317,20 @@ namespace Algorithms_and_Data_Structures
             }
         }
 
-
+        /// <summary>
+        /// Traverses the tree in pre-order.
+        /// </summary>
+        /// <param name="action">The action object necessary for recursive traversal.</param>
         public void PreOrderTraversal(Action<T> action)
         {
             this.PreOrderTraversal(action, this.Root);
         }
 
+        /// <summary>
+        /// Traverses the tree in pre-order.
+        /// </summary>
+        /// <param name="action">The action object necessary for recursive traversal.</param>
+        /// <param name="node">The node to start traversing.</param>
         private void PreOrderTraversal(Action<T> action, MyAVLTreeNode<T> node)
         {
             if (node != null)
@@ -265,11 +341,20 @@ namespace Algorithms_and_Data_Structures
             }
         }
 
+        /// <summary>
+        /// Traverses the tree in post-order.
+        /// </summary>
+        /// <param name="action">The action object necessary for recursive traversal.</param>
         public void PostOrderTraversal(Action<T> action)
         {
             this.PostOrderTraversal(action, this.Root);
         }
 
+        /// <summary>
+        /// Traverses the tree in post-order.
+        /// </summary>
+        /// <param name="action">The action object necessary for recursive traversal.</param>
+        /// <param name="node">The node to start traversing.</param>
         private void PostOrderTraversal(Action<T> action, MyAVLTreeNode<T> node)
         {
             if (node != null)
@@ -280,7 +365,10 @@ namespace Algorithms_and_Data_Structures
             }
         }
 
-        
+        /// <summary>
+        /// Performs in-order traversal without recursion. (left child, node, right child).
+        /// </summary>
+        /// <returns>Returns an Enumerator object.</returns>
         public IEnumerator<T> InOrderTraversalNoRecurse()
         {
             var stack = new Stack<MyAVLTreeNode<T>>();
@@ -320,9 +408,13 @@ namespace Algorithms_and_Data_Structures
             }
         }
 
-        // This is very similar to InOrderTraversalNoRecurse.  The only change is where the values are returned.
+        /// <summary>
+        /// Performs pre-order traversal without recursion (node, left child, right child).
+        /// </summary>
+        /// <returns>Returns an enumerator.</returns>
         public IEnumerator<T> PreOrderTraversalNoRecurse()
         {
+            // This is very similar to InOrderTraversalNoRecurse.  The only change is where the values are returned.
             var stack = new Stack<MyAVLTreeNode<T>>();
             var current = this.Root;
             bool goLeft = true;
@@ -361,10 +453,14 @@ namespace Algorithms_and_Data_Structures
             }
         }
 
-        // This one is more 'complicated' than the other two.  It's complicated in that it was a lot different even though 
-        // the implementation actually ends up simpler. Uses a 'Visited' flag not used in the other two methods.
+        /// <summary>
+        /// Performs pre-order traversal without using recursion (left child, right child, node).
+        /// </summary>
+        /// <returns>Returns an Enumerator.</returns>
         public IEnumerator<T> PostOrderTraversalNoRecurse()
         {
+            // This one is more 'complicated' than the other two.  It's complicated in that it was a lot different even though 
+            // the implementation actually ends up simpler. Uses a 'Visited' flag not used in the other two methods.
             var stack = new Stack<MyAVLTreeNode<T>>();
             var current = this.Root;
 
@@ -400,11 +496,19 @@ namespace Algorithms_and_Data_Structures
             }
         }
 
+        /// <summary>
+        /// Implementation of IEnumerable.
+        /// </summary>
+        /// <returns>Returns an Enumerator.</returns>
         public IEnumerator<T> GetEnumerator()
         {        
             return this.PreOrderTraversalNoRecurse();
         }
 
+        /// <summary>
+        /// Implementation of IEnumerable.
+        /// </summary>
+        /// <returns>Returns an Enumerator.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable<T>)this).GetEnumerator();

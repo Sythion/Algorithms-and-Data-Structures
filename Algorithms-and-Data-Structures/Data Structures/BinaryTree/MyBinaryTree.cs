@@ -7,7 +7,7 @@ namespace Algorithms_and_Data_Structures
     /// <summary>
     /// Custom binary tree class.
     /// Best-case time complexity for a binary tree search is O(log(N)) if the tree is balanced.  
-    /// All binary operations will be log(N) for a single search.  This is because at each level of the tree, we will require at most 1 comparison.
+    /// All binary operations will be log(N) for a single search.  This is because at each level of the tree, we will require at most 1 additional comparison.
     /// So for a binary tree with 16 nodes (nodes without children) we will require at most 4 comparisons which equals the height of the tree (starting at 0).
     /// Worst-case time complexity for a binary tree search is O(N) if the tree is significantly unbalanced. 
     /// This is because if it is unbalanced enough, it will behave like a linked list.
@@ -255,7 +255,7 @@ namespace Algorithms_and_Data_Structures
         /// <summary>
         /// Traverses the tree in value order.
         /// </summary>
-        /// <param name="action">The action object necessary for recusive traversal.</param>
+        /// <param name="action">The action object necessary for recursive traversal.</param>
         /// <param name="node">The node to start traversing.</param>
         private void InOrderTraversal(Action<T> action, MyBinaryTreeNode<T> node)
         {
@@ -361,7 +361,7 @@ namespace Algorithms_and_Data_Structures
         /// <summary>
         /// Performs pre-order traversal without recursion (node, left child, right child).
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns an enumerator.</returns>
         public IEnumerator<T> PreOrderTraversalNoRecurse()
         {
             /// This is very similar to InOrderTraversalNoRecurse.  The only change is where the values are returned.
@@ -473,7 +473,7 @@ namespace Algorithms_and_Data_Structures
     /// <summary>
     /// A node class to be used with the MyBinaryTree class.
     /// </summary>
-    /// <typeparam name="TNode"></typeparam>
+    /// <typeparam name="TNode">The value to use with the MyBinaryTreeNode.</typeparam>
     public class MyBinaryTreeNode<TNode> : IComparable<TNode> where TNode : IComparable<TNode>
     {
         /// <summary>
